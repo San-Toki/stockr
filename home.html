@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>stockr</title>
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    </head>
+    <body>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="home.html"><h1>stockr</h1></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">How to Use</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">About</a>
+            </li>
+        </ul>
+
+        <div id="search" class="container">
+            <div class="row">
+                <form class="full-form" action="results.html">
+                    <h1>Search for stores with...</h1>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control form-control-lg" placeholder="sneakers, apples" aria-label="sneakers, apples" aria-describedby="button-addon2">
+                    </div>
+                    <h2>located near...</h2>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control form-control-lg" placeholder="123 Cherry St." aria-label="123 Cherry St." aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary input-form-button" type="button" id="button-addon2"><i class="fas fa-map-marker-alt fa-lg"></i></button>
+                        </div>
+                    </div>
+                    <br>
+                    <input type="submit" class="btn btn-outline-dark btn-lg btn-block" value="Search">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script src="https://code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>

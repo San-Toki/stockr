@@ -1,0 +1,34 @@
+#search {
+	margin-top: 180px;
+	text-align: center;
+}
+
+.nav-item {
+	line-height: 70px;
+	vertical-align: bottom;
+}
+
+.logo {
+	margin-left: 10px;
+}
+
+.full-form {
+	width: 100%;
+	text-align: left;
+}
+
+.input-form-button {
+	width: 50px;
+}
+
+#results {
+	margin-top: 50px;
+}
+
+.btn-group {
+	margin-right: 10px;
+}
+
+.card {
+	margin-bottom: 20px;
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>stockr</title>
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    </head>
+    <body>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="home.html"><h1>stockr</h1></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">How to Use</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">About</a>
+            </li>
+        </ul>
+
+        <div class="container">
+            <div class="row">
+                <form class="full-form">
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">Search for</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="items" value="sneakers, apples">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Near</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="location" value="123 Cherry St.">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            Filters
+                        </div>
+                        <div class="col-sm-10">
+                            <!-- Size -->
+                            <div class="btn-group">
+                                <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Size
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">6</a>
+                                    <a class="dropdown-item" href="#">6.5</a>
+                                    <a class="dropdown-item" href="#">7</a>
+                                </div>
+                            </div>
+
+                            <!-- Color -->
+                            <div class="btn-group">
+                                <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Color
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">White</a>
+                                    <a class="dropdown-item" href="#">Grey</a>
+                                    <a class="dropdown-item" href="#">Black</a>
+                                </div>
+                            </div>
+
+                            <!-- Brand -->
+                            <div class="btn-group">
+                                <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Brand
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Timberlake</a>
+                                    <a class="dropdown-item" href="#">Doc Marvins</a>
+                                    <a class="dropdown-item" href="#">Dr. Shools</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <input type="submit" class="btn btn-outline-dark btn-block" value="Search">
+                </form>
+            </div>
+        </div>
+
+        <div id="results" class="container">
+            <div class="row card">
+                <div class="card-body">
+                    <h5 class="card-title">Noddell's Sporting Goods</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">5 Cherry St. New York, NY 12345</h6>
+                    <p class="card-text">200 feet away</p>
+                    <a href="#" class="card-link">View Details</a>
+                </div>
+            </div>
+
+            <div class="row card">
+                <div class="card-body">
+                    <h5 class="card-title">Ratagonia</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">12 Cherry St. New York, NY 12345</h6>
+                    <p class="card-text">.1 mile away</p>
+                    <a href="#" class="card-link">View Details</a>
+                </div>
+            </div>
+
+            <div class="row card">
+                <div class="card-body">
+                    <h5 class="card-title">Golf Express</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">38 Cherry St. New York, NY 12345</h6>
+                    <p class="card-text">.5 mile away</p>
+                    <a href="#" class="card-link">View Details</a>
+                </div>
+            </div>
+
+            <div class="row card">
+                <div class="card-body">
+                    <h5 class="card-title">Ratagonia</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">12 Cherry St. New York, NY 12345</h6>
+                    <p class="card-text">.1 mile away</p>
+                    <a href="#" class="card-link">View Details</a>
+                </div>
+            </div>
+
+            <div class="row card">
+                <div class="card-body">
+                    <h5 class="card-title">Ratagonia</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">12 Cherry St. New York, NY 12345</h6>
+                    <p class="card-text">.1 mile away</p>
+                    <a href="#" class="card-link">View Details</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
