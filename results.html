@@ -14,26 +14,29 @@
                 <a class="nav-link active" href="home.html"><h1>stockr</h1></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#">How to Use</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="#">About</a>
+                <a class="nav-link active" href="how_to_use.html">How to Use</a>
             </li>
         </ul>
 
         <div class="container">
+            <div class="row error-message">
+                Please complete all required fields.
+            </div>
             <div class="row">
-                <form class="full-form">
+                <form id="search-form" class="full-form" action="javascript:submitForm()">
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-2 col-form-label">Search for</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="items" value="sneakers, apples">
+                            <input id="search-text" type="text" class="form-control" id="items" placeholder="sneakers, apples">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">Near</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="location" value="123 Cherry St.">
+                        <div class="col-sm-10 input-group mb-3">
+                            <input id="location-text" type="text" class="form-control" placeholder="9 Nineth st." aria-label="Address field" aria-describedby="address-field">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary input-form-button" type="button" id="location-button"><i class="fas fa-map-marker-alt"></i></button>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -90,7 +93,7 @@
                     <h5 class="card-title">Noddell's Sporting Goods</h5>
                     <h6 class="card-subtitle mb-2 text-muted">5 Cherry St. New York, NY 12345</h6>
                     <p class="card-text">200 feet away</p>
-                    <a href="#" class="card-link">View Details</a>
+                    <a href="javascript:showStoreDetail(0)" class="card-link">View Details</a>
                 </div>
             </div>
 
@@ -99,7 +102,7 @@
                     <h5 class="card-title">Ratagonia</h5>
                     <h6 class="card-subtitle mb-2 text-muted">12 Cherry St. New York, NY 12345</h6>
                     <p class="card-text">.1 mile away</p>
-                    <a href="#" class="card-link">View Details</a>
+                    <a href="javascript:showStoreDetail(1)" class="card-link">View Details</a>
                 </div>
             </div>
 
@@ -108,25 +111,25 @@
                     <h5 class="card-title">Golf Express</h5>
                     <h6 class="card-subtitle mb-2 text-muted">38 Cherry St. New York, NY 12345</h6>
                     <p class="card-text">.5 mile away</p>
-                    <a href="#" class="card-link">View Details</a>
+                    <a href="javascript:showStoreDetail(2)" class="card-link">View Details</a>
                 </div>
             </div>
 
             <div class="row card">
                 <div class="card-body">
-                    <h5 class="card-title">Ratagonia</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">12 Cherry St. New York, NY 12345</h6>
-                    <p class="card-text">.1 mile away</p>
-                    <a href="#" class="card-link">View Details</a>
+                    <h5 class="card-title">Wallnart</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">2 Apple Ave. New York, NY 12345</h6>
+                    <p class="card-text">1.1 mile away</p>
+                    <a href="javascript:showStoreDetail(3)" class="card-link">View Details</a>
                 </div>
             </div>
 
             <div class="row card">
                 <div class="card-body">
-                    <h5 class="card-title">Ratagonia</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">12 Cherry St. New York, NY 12345</h6>
-                    <p class="card-text">.1 mile away</p>
-                    <a href="#" class="card-link">View Details</a>
+                    <h5 class="card-title">Tartget</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">411 Cherry St. New York, NY 12345</h6>
+                    <p class="card-text">3 miles away</p>
+                    <a href="javascript:showStoreDetail(4)" class="card-link">View Details</a>
                 </div>
             </div>
         </div>
@@ -134,4 +137,78 @@
 </html>
 
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<script>
+    function getURLParameter(sParam) {
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+        for (var i = 0; i < sURLVariables.length; i++) {
+            var sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] == sParam) {
+                return sParameterName[1];
+            }
+        }
+    }
+
+    $("#search-text").val(unescape(getURLParameter('search')));
+    $("#location-text").val(unescape(getURLParameter('location')));
+
+    $("#location-button").on('click', function() {
+        $("#location-text").val("123 Cherry St. New York, NY 10000");
+    });
+
+    $("#search-text").on("change", function(e) {
+        if (e.target.value != "") {
+            $("#search-text").css("border-color", "inherit");
+            if ($("#location-text").val() != "") {
+                $(".error-message").css("visibility","hidden");
+            }
+        }
+    });
+    
+    $("#location-text").on("change", function(e) {
+        if(e.target.value != "") {
+            $("#location-text").css("border-color", "inherit");
+            if ($("#search-text").val() != "") {
+                $(".error-message").css("visibility","hidden");
+            }
+        }
+    });
+    
+    $("#location-button").on('click', function() {
+        $("#location-text").val("123 Cherry St. New York, NY 10000");
+        $("#location-text").change();
+    });
+    
+    $("#search-form").submit(function( event ) {
+        if ($("#search-text").val() == "") {
+            $("#search-text").css("border-color","red");
+        }
+        if ($("#location-text").val() == "") {
+            $("#location-text").css("border-color","red");
+        }
+        if($("#search-text").val() == "" ||
+           $("#location-text").val() == "") {
+            $(".error-message").css("visibility","visible");
+            event.preventDefault();
+        }
+    });
+
+    function submitForm() {
+        window.location.replace("results.html?search=" +
+            $("#search-text").val() +
+            "&location=" +
+            $("#location-text").val());
+    }
+
+    function showStoreDetail(storeid) {
+        window.location.replace("store_detail.html?id=" +
+            storeid +
+            "&search=" +
+            $("#search-text").val() +
+            "&location=" +
+            $("#location-text").val());
+    }
+</script>

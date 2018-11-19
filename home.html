@@ -14,25 +14,25 @@
                 <a class="nav-link active" href="home.html"><h1>stockr</h1></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#">How to Use</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="#">About</a>
+                <a class="nav-link active" href="how_to_use.html">How to Use</a>
             </li>
         </ul>
 
         <div id="search" class="container">
+            <div class="row error-message">
+                Please complete all required fields.
+            </div>
             <div class="row">
-                <form class="full-form" action="results.html">
+                <form id="search-form" class="full-form" action="javascript:submitForm()">
                     <h1>Search for stores with...</h1>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control form-control-lg" placeholder="sneakers, apples" aria-label="sneakers, apples" aria-describedby="button-addon2">
+                        <input id="search-text" type="text" class="form-control form-control-lg" placeholder="sneakers, apples" aria-label="sneakers, apples" aria-describedby="button-addon2">
                     </div>
                     <h2>located near...</h2>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control form-control-lg" placeholder="123 Cherry St." aria-label="123 Cherry St." aria-describedby="button-addon2">
+                        <input id="location-text" type="text" class="form-control form-control-lg" placeholder="9 Nineth st." aria-label="123 Cherry St." aria-describedby="button-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary input-form-button" type="button" id="button-addon2"><i class="fas fa-map-marker-alt fa-lg"></i></button>
+                            <button class="btn btn-outline-secondary input-form-button" type="button" id="location-button"><i class="fas fa-map-marker-alt fa-lg"></i></button>
                         </div>
                     </div>
                     <br>
@@ -43,5 +43,51 @@
     </body>
 </html>
 
-<script src="https://code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script>
+    $("#search-text").on("change", function(e) {
+        if (e.target.value != "") {
+            $("#search-text").css("border-color", "inherit");
+            if ($("#location-text").val() != "") {
+                $(".error-message").css("visibility","hidden");
+            }
+        }
+    });
+    
+    $("#location-text").on("change", function(e) {
+        if(e.target.value != "") {
+            $("#location-text").css("border-color", "inherit");
+            if ($("#search-text").val() != "") {
+                $(".error-message").css("visibility","hidden");
+            }
+        }
+    });
+    
+    $("#location-button").on('click', function() {
+        $("#location-text").val("123 Cherry St. New York, NY 10000");
+        $("#location-text").change();
+    });
+    
+    $("#search-form").submit(function( event ) {
+        if ($("#search-text").val() == "") {
+            $("#search-text").css("border-color","red");
+        }
+        if ($("#location-text").val() == "") {
+            $("#location-text").css("border-color","red");
+        }
+        if($("#search-text").val() == "" ||
+           $("#location-text").val() == "") {
+            $(".error-message").css("visibility","visible");
+            event.preventDefault();
+        }
+    });
+
+    function submitForm() {
+        window.location.replace("results.html?search=" +
+            $("#search-text").val() +
+            "&location=" +
+            $("#location-text").val());
+    }
+</script>

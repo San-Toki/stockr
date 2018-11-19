@@ -32,3 +32,12 @@
 .card {
 	margin-bottom: 20px;
 }
+
+.error-message {
+    color: red;
+    visibility: hidden;
+}
+
+.image {
+	border: 1px solid black;
+}

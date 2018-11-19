@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>stockr</title>
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    </head>
+    <body>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="home.html"><h1>stockr</h1></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="how_to_use.html">How to Use</a>
+            </li>
+        </ul>
+
+        <div class="container">
+            <div class="row">
+                <a href="javascript:backToResultsList(0)"><h5>< Back to results list</h5></a>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-4 image"></div>
+                <div class="col-sm-8">
+                    <h1 id="name"></h1>
+                    <br>
+                    <h3 id="address"></h3>
+                    <br>
+                    <h5 id="distance"></h5>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2>Hours</h2>
+                    <h3>
+                        Mon-Fri:
+                        <br>
+                        Saturday:
+                        <br>
+                        Sunday:
+                    </h3>
+                </div>
+                <div class="col-sm-3">
+                    <h2>&nbsp;</h2>
+                    <h3>
+                        8am - 8pm
+                        <br>
+                        9am - 9pm
+                        <br>
+                        9am - 6pm
+                    </h3>
+                </div>
+                <div class="col-sm-1">
+                </div>
+                <div class="col-sm-4">
+                    <h2>In Stock</h2>
+                    <h3 id="searched-items"></h3>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <button onclick="directions()" class="btn btn-outline-dark btn-lg btn-block"><i class="fas fa-directions fa-lg"></i>&nbsp;&nbsp;Directions</button>
+            </div>
+            <br>
+            <div class="row">
+                <button onclick="call()" disabled class="btn btn-outline-dark btn-lg btn-block"><i class="fas fa-phone-square fa-lg"></i>&nbsp;&nbsp;Call</button>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>Also in Stock</h4>
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    Women's Apparel
+                    <br>
+                    Men's Apparel
+                    <br>
+                    Kid's Apparel
+                </div>
+                <div class="col-sm-6">
+                    Women's Shoes
+                    <br>
+                    Men's Shoes
+                    <br>
+                    Kid's Shoes
+                    <br>
+                </div>
+            </div>
+            <br><br><br>
+        </div>
+    </body>
+</html>
+
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script>
+    var stores = [
+        ["Noddell's Sporting Goods", "5 Cherry St.<br>New York, NY 12345", "200 feet away"],
+        ["Ratagonia", "12 Cherry St.<br>New York, NY 12345", ".1 mile away"],
+        ["Gold Express", "38 Cherry St.<br>New York, NY 12345", ".5 mile away"],
+        ["Wallnart", "2 Apple Ave.<br>New York, NY 12345", "1.1 mile away"],
+        ["Tartget", "411 Cherry St.<br>New York, NY 12345", "3 miles away"],
+    ]
+
+    function getURLParameter(sParam) {
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+        for (var i = 0; i < sURLVariables.length; i++) {
+            var sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] == sParam) {
+                return sParameterName[1];
+            }
+        }
+    }
+
+    var storeId = getURLParameter('id');
+    var store = stores[storeId];
+
+    $("#name").html(store[0]);
+    $("#address").html(store[1]);
+    $("#distance").html(store[2]);
+
+    $("#searched-items").html(unescape(getURLParameter('search')));
+
+    function directions() {
+        window.location.replace("https://www.google.com/maps");
+    }
+
+    function call() {
+        window.location.replace("https://www.google.com/maps");
+    }
+
+    function backToResultsList() {
+        window.location.replace("results.html?search=" +
+            getURLParameter('search') +
+            "&location=" +
+            getURLParameter('location'));
+    }
+</script>
