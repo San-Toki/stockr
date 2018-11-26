@@ -35,7 +35,7 @@
                         <div class="col-sm-10 input-group mb-3">
                             <input id="location-text" type="text" class="form-control" placeholder="9 Nineth st." aria-label="Address field" aria-describedby="address-field">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary input-form-button" type="button" id="location-button"><i class="fas fa-map-marker-alt"></i></button>
+                                <button class="btn btn-outline-secondary" type="button" id="location-button"><i class="fas fa-map-marker-alt fa-lg"></i>&nbsp;&nbsp;&nbsp;Current location</button>
                             </div>
                         </div>
                     </div>
@@ -44,40 +44,8 @@
                             Filters
                         </div>
                         <div class="col-sm-10">
-                            <!-- Size -->
-                            <div class="btn-group">
-                                <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Size
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">6</a>
-                                    <a class="dropdown-item" href="#">6.5</a>
-                                    <a class="dropdown-item" href="#">7</a>
-                                </div>
-                            </div>
-
-                            <!-- Color -->
-                            <div class="btn-group">
-                                <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Color
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">White</a>
-                                    <a class="dropdown-item" href="#">Grey</a>
-                                    <a class="dropdown-item" href="#">Black</a>
-                                </div>
-                            </div>
-
-                            <!-- Brand -->
-                            <div class="btn-group">
-                                <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Brand
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Timberlake</a>
-                                    <a class="dropdown-item" href="#">Doc Marvins</a>
-                                    <a class="dropdown-item" href="#">Dr. Shools</a>
-                                </div>
+                            <div class="accordion" id="filters">
+                                  </div>
                             </div>
                         </div>
                     </div>
@@ -211,4 +179,51 @@
             "&location=" +
             $("#location-text").val());
     }
+
+    var searched_items = unescape(getURLParameter('search'));
+
+    // Create a list with separated searched items.
+    searched_items_list = [];
+    searched_items.split(",").forEach(function(item){
+        searched_items_list.push(item.trim());
+    });
+    // Add a filter section for each searched item.
+    searched_items_list.forEach(function(item) {
+        console.log(item);
+        $("#filters").append(
+            `<div>
+                <div id='heading${item}'>
+                    <h5 class='mb-0'>
+                        <button class='btn btn-outline-dark bottom-margin' type='button' data-toggle='collapse' data-target='#collapse${item}' aria-expanded='false' aria-controls='collapseOne'>
+                            ${item}
+                        </button>
+                    </h5>
+                </div>
+                <div id='collapse${item}' class='collapse' aria-labelledby='heading${item}' data-parent='#filters'>
+                    <div class='card-body'>
+                        <div class="btn-group">
+                            <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Size
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">XS</a>
+                                <a class="dropdown-item" href="#">S</a>
+                                <a class="dropdown-item" href="#">M</a>
+                                <a class="dropdown-item" href="#">L</a>
+                                <a class="dropdown-item" href="#">XL</a>
+                                <a class="dropdown-item" href="#">XL</a>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Color
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">White</a>
+                                <a class="dropdown-item" href="#">Grey</a>
+                                <a class="dropdown-item" href="#">Black</a>
+                            </div>
+                        </div>`
+            );
+    });
 </script>

@@ -58,8 +58,9 @@
                 <div class="col-sm-1">
                 </div>
                 <div class="col-sm-4">
-                    <h2>In Stock</h2>
-                    <h3 id="searched-items"></h3>
+                    <h3>Price range: <span id="price"></span></h3>
+                    <br>
+                    <h3>Sale: <span id="sale"></span></h3>
                 </div>
             </div>
             <br><br>
@@ -73,24 +74,26 @@
             <br><br>
             <div class="row">
                 <div class="col-sm-12">
-                    <h4>Also in Stock</h4>
-                    <br>
+                    <h4>In stock</h4>
+                    <span id="searched-items"></span>
+                    <br><br>
+                    <h4>Also in stock</h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    Women's Apparel
+                    Women's apparel
                     <br>
-                    Men's Apparel
+                    Men's apparel
                     <br>
-                    Kid's Apparel
+                    Kid's apparel
                 </div>
                 <div class="col-sm-6">
-                    Women's Shoes
+                    Women's shoes
                     <br>
-                    Men's Shoes
+                    Men's shoes
                     <br>
-                    Kid's Shoes
+                    Kid's shoes
                     <br>
                 </div>
             </div>
@@ -104,11 +107,11 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script>
     var stores = [
-        ["Noddell's Sporting Goods", "5 Cherry St.<br>New York, NY 12345", "200 feet away"],
-        ["Ratagonia", "12 Cherry St.<br>New York, NY 12345", ".1 mile away"],
-        ["Gold Express", "38 Cherry St.<br>New York, NY 12345", ".5 mile away"],
-        ["Wallnart", "2 Apple Ave.<br>New York, NY 12345", "1.1 mile away"],
-        ["Tartget", "411 Cherry St.<br>New York, NY 12345", "3 miles away"],
+        ["Noddell's Sporting Goods", "5 Cherry St.<br>New York, NY 12345", "200 feet away", "$$", "30% off on entire purchase."],
+        ["Ratagonia", "12 Cherry St.<br>New York, NY 12345", ".1 mile away", "$$$", "No ongoing sales."],
+        ["Gold Express", "38 Cherry St.<br>New York, NY 12345", ".5 mile away", "$$$", "$20 off a purchase of $100 or more."],
+        ["Wallnart", "2 Apple Ave.<br>New York, NY 12345", "1.1 mile away", "$", "No ongoing sales."],
+        ["Tartget", "411 Cherry St.<br>New York, NY 12345", "3 miles away", "$$", "10% off apparel."],
     ]
 
     function getURLParameter(sParam) {
@@ -128,8 +131,11 @@
     $("#name").html(store[0]);
     $("#address").html(store[1]);
     $("#distance").html(store[2]);
+    $("#price").html(store[3]);
+    $("#sale").html(store[4]);
 
-    $("#searched-items").html(unescape(getURLParameter('search')));
+    var searched_items = unescape(getURLParameter('search'));
+    $("#searched-items").html(searched_items);
 
     function directions() {
         window.location.replace("https://www.google.com/maps");

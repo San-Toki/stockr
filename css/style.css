@@ -41,3 +41,7 @@
 .image {
 	border: 1px solid black;
 }
+
+.bottom-margin {
+	margin-bottom: 10px;
+}
